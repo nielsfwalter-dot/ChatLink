@@ -5,19 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+        name="description"
+        content="ChatLink – Deine Verbindung. Dein Chat."
+    >
+
+    <meta name="theme-color" content="#10172b">
+
     <title>ChatLink – Deine Verbindung. Dein Chat.</title>
-    <meta name="description" content="Willkommen bei ChatLink – deiner neuen Verbindung.">
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Supabase für Anmeldung und Registrierung -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        :root {
+            --background: #10172b;
+            --surface: rgba(255, 255, 255, 0.07);
+            --surface-border: rgba(255, 255, 255, 0.12);
+            --text: #ffffff;
+            --muted: #b8c2d8;
+            --blue: #287bff;
+            --red: #ef4056;
+            --gradient: linear-gradient(110deg, #287bff, #ef4056);
+        }
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         html {
@@ -25,267 +41,286 @@
         }
 
         body {
+            margin: 0;
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #ffffff;
+            color: var(--text);
             background:
-                radial-gradient(circle at 15% 15%, rgba(0, 115, 255, 0.35), transparent 40%),
-                radial-gradient(circle at 85% 20%, rgba(255, 20, 70, 0.30), transparent 40%),
-                linear-gradient(135deg, #061a40, #142c60, #511b45, #a31232);
-            background-attachment: fixed;
+                radial-gradient(circle at 15% 15%, #173c70 0, transparent 35%),
+                radial-gradient(circle at 85% 30%, #5b203e 0, transparent 35%),
+                var(--background);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         a {
             color: inherit;
+            text-decoration: none;
         }
 
-        header {
+        .site-header {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            padding: 20px 7%;
-            background: rgba(5, 10, 30, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 18px 7%;
+            background: rgba(12, 18, 35, 0.88);
+            border-bottom: 1px solid var(--surface-border);
+            backdrop-filter: blur(14px);
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-decoration: none;
-            text-shadow: 0 0 15px #168cff;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 22px;
-        }
-
-        nav a {
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: #ff829b;
-        }
-
-        main {
-            width: min(1100px, 90%);
-            margin: auto;
-        }
-
-        section {
-            padding: 75px 0;
-            scroll-margin-top: 90px;
-        }
-
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 76px);
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #54b7ff, #ffffff, #ff5579);
+        .logo span,
+        .gradient-text {
+            background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .hero p {
-            max-width: 650px;
-            font-size: 19px;
-            line-height: 1.7;
-            color: #e4e9ff;
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
         }
 
-        .hero-buttons {
+        .main-nav a {
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            min-height: 480px;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+            align-items: center;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: 0 0 20px;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.05;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 25px;
         }
 
         .button {
-            display: inline-block;
-            padding: 14px 25px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 22px;
             border: 0;
-            border-radius: 30px;
-            background: linear-gradient(90deg, #087cff, #e51d52);
+            border-radius: 10px;
             color: white;
-            font-weight: bold;
-            text-decoration: none;
+            background: var(--gradient);
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, opacity 0.2s;
         }
 
         .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 22px rgba(80, 140, 255, 0.5);
+            transform: translateY(-2px);
+            opacity: 0.92;
         }
 
         .button-secondary {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--surface-border);
         }
 
-        .section-title {
+        .section {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 30px;
             text-align: center;
-            font-size: 34px;
-            margin-bottom: 18px;
         }
 
-        .section-description {
-            text-align: center;
-            color: #d7ddf5;
-            line-height: 1.7;
-            margin: 0 auto 30px;
-            max-width: 650px;
+        .section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
         }
 
-        .feature-grid {
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
         }
 
-        .feature-card,
+        .card,
         .form-card,
         .dashboard-card {
-            padding: 28px;
-            border-radius: 20px;
-            background: rgba(7, 12, 35, 0.72);
-            border: 1px solid rgba(255,255,255,0.16);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            padding: 25px;
+            border: 1px solid var(--surface-border);
+            border-radius: 17px;
+            background: var(--surface);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(12px);
         }
 
-        .feature-card h3 {
-            margin-bottom: 12px;
-            color: #8bc8ff;
+        .card h3,
+        .dashboard-card h3 {
+            margin-top: 0;
         }
 
-        .feature-card p {
-            color: #e0e5f7;
+        .card p,
+        .muted {
+            color: var(--muted);
             line-height: 1.6;
         }
 
-        .form-card {
-            width: min(460px, 100%);
-            margin: 0 auto;
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            align-items: start;
         }
 
         .form-card h2 {
-            text-align: center;
-            margin-bottom: 25px;
+            margin-top: 0;
         }
 
-        .form-card form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+        .form-group {
+            margin-bottom: 17px;
         }
 
-        .form-card label {
-            font-size: 14px;
-            font-weight: bold;
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted);
         }
 
-        .form-card input {
+        .form-group input {
             width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.25);
+            padding: 13px 14px;
+            border: 1px solid var(--surface-border);
+            border-radius: 9px;
             outline: none;
-            background: rgba(0,0,0,0.35);
             color: white;
-            font-size: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
         }
 
-        .form-card input:focus {
-            border-color: #55aaff;
-            box-shadow: 0 0 10px rgba(30,130,255,0.35);
+        .form-group input:focus {
+            border-color: var(--blue);
         }
 
-        .form-card input::placeholder {
-            color: #aeb8d4;
-        }
-
-        .form-card button {
-            margin-top: 10px;
-        }
-
-        .form-note {
-            text-align: center;
-            margin-top: 18px;
-            color: #d9e2ff;
-            line-height: 1.6;
-        }
-
-        .form-note a {
-            color: #8bc8ff;
+        .form-card .button {
+            width: 100%;
         }
 
         .text-button {
-            display: block;
-            margin: 15px auto 0;
-            padding: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 0;
+            border: 0;
+            color: #8dbaff;
             background: none;
-            border: none;
-            color: #9acaff;
             cursor: pointer;
-            text-decoration: underline;
-        }
-
-        #dashboard {
-            display: none;
         }
 
         #systemMessage {
-            display: none;
-            width: min(600px, 90%);
+            width: min(900px, 90%);
             margin: 20px auto;
-            padding: 15px;
+            padding: 14px 18px;
+            border: 1px solid var(--surface-border);
+            border-radius: 10px;
+            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            overflow-wrap: anywhere;
+        }
+
+        #systemMessage[data-type="error"] {
+            border-color: #ef4056;
+        }
+
+        #systemMessage[data-type="success"] {
+            border-color: #35bd78;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .server-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .server-item {
+            padding: 18px;
+            border: 1px solid var(--surface-border);
             border-radius: 12px;
-            background: rgba(0,0,0,0.55);
-            border: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
+            background: rgba(0, 0, 0, 0.16);
+            overflow-wrap: anywhere;
+        }
+
+        .server-item h3 {
+            margin-top: 0;
         }
 
         footer {
-            padding: 30px 15px;
+            margin-top: 60px;
+            padding: 30px 20px;
+            border-top: 1px solid var(--surface-border);
+            color: var(--muted);
             text-align: center;
-            color: #d0d8f2;
-            background: rgba(4, 8, 25, 0.7);
-            border-top: 1px solid rgba(255,255,255,0.12);
         }
 
         @media (max-width: 650px) {
-            header {
+            .site-header {
                 flex-direction: column;
             }
 
-            nav {
+            .main-nav {
                 justify-content: center;
-                gap: 15px;
+                gap: 14px;
             }
 
-            section {
-                padding: 55px 0;
+            .hero {
+                min-height: 400px;
             }
         }
     </style>
@@ -293,13 +328,15 @@
 
 <body>
 
-    <!-- KOPFBEREICH -->
-    <header>
-        <a class="logo" href="#home">ChatLink</a>
+    <!-- HEADER -->
+    <header class="site-header">
+        <a class="logo" href="#home">
+            Chat<span>Link</span>
+        </a>
 
-        <nav>
+        <nav class="main-nav" aria-label="Hauptnavigation">
             <a href="#home">Startseite</a>
-            <a href="#features">Funktionen</a>
+            <a href="#features">Features</a>
             <a href="#login">Anmelden</a>
             <a href="#register">Registrieren</a>
         </nav>
@@ -309,174 +346,291 @@
 
         <!-- STARTSEITE -->
         <section class="hero" id="home">
-            <h1>Willkommen bei ChatLink</h1>
+            <h1>
+                Willkommen bei
+                <span class="gradient-text">ChatLink</span>
+            </h1>
 
             <p>
                 Deine Verbindung. Dein Chat.
-                ChatLink ist zurück – und wir bauen gemeinsam
-                eine neue Plattform für Kommunikation.
+                Entdecke eine neue Art, mit Freunden, Communities
+                und Entwicklern in Kontakt zu bleiben.
             </p>
 
-            <div class="hero-buttons">
-                <a class="button" href="#register">Jetzt registrieren</a>
-                <a class="button button-secondary" href="#login">Anmelden</a>
+            <div class="button-row">
+                <a class="button" href="#register">
+                    Jetzt registrieren
+                </a>
+
+                <a class="button button-secondary" href="#login">
+                    Anmelden
+                </a>
             </div>
         </section>
 
-        <!-- FUNKTIONEN -->
-        <section id="features">
-            <h2 class="section-title">Was dich erwartet</h2>
+        <!-- FEATURES -->
+        <section class="section" id="features">
+            <div class="section-heading">
+                <h2>Was ChatLink bietet</h2>
+                <p>Die Grundlage für deine digitale Community.</p>
+            </div>
 
-            <p class="section-description">
-                ChatLink 2.0 entsteht Schritt für Schritt.
-                Die folgenden Bereiche bilden die Grundlage unserer Plattform.
-            </p>
-
-            <div class="feature-grid">
-                <div class="feature-card">
+            <div class="card-grid">
+                <article class="card">
                     <h3>Dein Konto</h3>
-                    <p>Erstelle deinen eigenen ChatLink-Account.</p>
-                </div>
+                    <p>
+                        Erstelle dein persönliches ChatLink-Konto
+                        und verwalte dein Profil.
+                    </p>
+                </article>
 
-                <div class="feature-card">
+                <article class="card">
                     <h3>Nachrichten</h3>
-                    <p>Die Grundlage für deine persönliche Kommunikation.</p>
-                </div>
+                    <p>
+                        Die Grundlage für Kommunikation und
+                        Nachrichten in deinen Servern.
+                    </p>
+                </article>
 
-                <div class="feature-card">
+                <article class="card">
                     <h3>Dein Profil</h3>
-                    <p>Deine Identität und deine persönlichen Einstellungen.</p>
-                </div>
+                    <p>
+                        Verwalte deinen Benutzernamen und
+                        deine persönlichen Kontoinformationen.
+                    </p>
+                </article>
 
-                <div class="feature-card">
+                <article class="card">
                     <h3>ChatLink Music</h3>
-                    <p>Ein eigener Bereich für Musik und Playlists ist geplant.</p>
+                    <p>
+                        Ein geplanter Bereich für Musik und
+                        gemeinsame Unterhaltung.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- LOGIN UND REGISTRIERUNG -->
+        <section class="section" id="accounts">
+            <div class="section-heading">
+                <h2>Dein ChatLink-Konto</h2>
+                <p>Melde dich an oder erstelle ein neues Konto.</p>
+            </div>
+
+            <div class="account-grid">
+
+                <!-- LOGIN -->
+                <section class="form-card" id="login">
+                    <h2>Anmelden</h2>
+
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">
+                                E-Mail-Adresse
+                            </label>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">
+                                Passwort
+                            </label>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                            >
+                        </div>
+
+                        <button class="button" type="submit">
+                            Anmelden
+                        </button>
+                    </form>
+
+                    <button
+                        class="text-button"
+                        type="button"
+                        id="forgotPassword"
+                    >
+                        Passwort vergessen?
+                    </button>
+                </section>
+
+                <!-- REGISTRIERUNG -->
+                <section class="form-card" id="register">
+                    <h2>Registrieren</h2>
+
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerUsername">
+                                Benutzername
+                            </label>
+
+                            <input
+                                type="text"
+                                id="registerUsername"
+                                name="username"
+                                minlength="3"
+                                maxlength="30"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail">
+                                E-Mail-Adresse
+                            </label>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPassword">
+                                Passwort
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                name="password"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">
+                                Passwort wiederholen
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="passwordConfirmation"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+                        </div>
+
+                        <button class="button" type="submit">
+                            Konto erstellen
+                        </button>
+                    </form>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- SYSTEMMELDUNGEN -->
+        <div
+            id="systemMessage"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></div>
+
+        <!-- DASHBOARD -->
+        <section class="section" id="dashboard" hidden>
+            <div class="dashboard-header">
+                <div>
+                    <h2 id="welcomeMessage">
+                        Willkommen bei ChatLink!
+                    </h2>
+
+                    <p class="muted" id="profileArea"></p>
                 </div>
-            </div>
-        </section>
 
-        <!-- ANMELDUNG -->
-        <section id="login">
-            <div class="form-card">
-                <h2>Bei ChatLink anmelden</h2>
-
-                <form id="loginForm">
-                    <label for="loginEmail">E-Mail-Adresse</label>
-                    <input
-                        type="email"
-                        id="loginEmail"
-                        placeholder="deine@email.de"
-                        autocomplete="email"
-                        required
-                    >
-
-                    <label for="loginPassword">Passwort</label>
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Dein Passwort"
-                        autocomplete="current-password"
-                        required
-                    >
-
-                    <button class="button" type="submit">
-                        Anmelden
-                    </button>
-                </form>
-
-                <button class="text-button" type="button" id="forgotPassword">
-                    Passwort vergessen?
-                </button>
-
-                <p class="form-note">
-                    Noch kein Konto?
-                    <a href="#register">Jetzt registrieren</a>
-                </p>
-            </div>
-        </section>
-
-        <!-- REGISTRIERUNG -->
-        <section id="register">
-            <div class="form-card">
-                <h2>Dein ChatLink-Konto erstellen</h2>
-
-                <form id="registerForm">
-                    <label for="registerUsername">Benutzername</label>
-                    <input
-                        type="text"
-                        id="registerUsername"
-                        placeholder="Dein Benutzername"
-                        autocomplete="username"
-                        minlength="3"
-                        maxlength="30"
-                        required
-                    >
-
-                    <label for="registerEmail">E-Mail-Adresse</label>
-                    <input
-                        type="email"
-                        id="registerEmail"
-                        placeholder="deine@email.de"
-                        autocomplete="email"
-                        required
-                    >
-
-                    <label for="registerPassword">Passwort</label>
-                    <input
-                        type="password"
-                        id="registerPassword"
-                        placeholder="Mindestens 8 Zeichen"
-                        autocomplete="new-password"
-                        minlength="8"
-                        required
-                    >
-
-                    <label for="confirmPassword">Passwort wiederholen</label>
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Passwort erneut eingeben"
-                        autocomplete="new-password"
-                        minlength="8"
-                        required
-                    >
-
-                    <button class="button" type="submit">
-                        Konto erstellen
-                    </button>
-                </form>
-
-                <p class="form-note">
-                    Du hast bereits ein Konto?
-                    <a href="#login">Jetzt anmelden</a>
-                </p>
-            </div>
-        </section>
-
-        <!-- BENUTZERBEREICH -->
-        <section id="dashboard">
-            <div class="dashboard-card">
-                <h2 id="welcomeMessage">Willkommen bei ChatLink!</h2>
-                <p id="profileArea">Dein persönlicher Bereich.</p>
-
-                <button class="button" id="logoutButton" type="button">
+                <button
+                    class="button button-secondary"
+                    type="button"
+                    id="logoutButton"
+                >
                     Abmelden
                 </button>
+            </div>
+
+            <!-- SERVER ERSTELLEN -->
+            <div class="dashboard-card">
+                <h3>Deinen Server erstellen</h3>
+
+                <p class="muted">
+                    Erstelle deinen eigenen ChatLink-Server.
+                </p>
+
+                <form id="serverForm">
+                    <div class="form-group">
+                        <label for="serverName">
+                            Servername
+                        </label>
+
+                        <input
+                            type="text"
+                            id="serverName"
+                            name="serverName"
+                            minlength="2"
+                            maxlength="60"
+                            placeholder="Mein erster Server"
+                            required
+                        >
+                    </div>
+
+                    <button class="button" type="submit">
+                        Server erstellen
+                    </button>
+                </form>
+            </div>
+
+            <!-- SERVERLISTE -->
+            <div class="dashboard-card" style="margin-top: 22px;">
+                <h3>Meine Server</h3>
+
+                <p class="muted">
+                    Hier erscheinen deine erstellten Server.
+                </p>
+
+                <div
+                    class="server-list"
+                    id="serverList"
+                    aria-live="polite"
+                >
+                    <p class="muted">
+                        Deine Server werden geladen ...
+                    </p>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- SYSTEMMELDUNGEN -->
-    <div id="systemMessage" role="status" aria-live="polite"></div>
-
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 ChatLink – Deine Verbindung. Dein Chat.</p>
-        <p>ChatLink 2.0 – Eine neue Generation beginnt.</p>
+        <p>© 2026 ChatLink. Alle Rechte vorbehalten.</p>
+        <p>ChatLink 2.1 – Deine Verbindung. Dein Chat.</p>
     </footer>
 
-    <!-- HAUPTSCRIPT -->
+    <!-- SUPABASE SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- CHATLINK MAIN SCRIPT -->
     <script type="module" src="script.js"></script>
 
 </body>

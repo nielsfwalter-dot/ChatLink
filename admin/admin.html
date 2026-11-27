@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChatLink Administrationspanel">
+
+    <title>ChatLink | Admin Panel</title>
+
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+
+<body>
+    <div class="admin-layout">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Chat<span>Link</span></h2>
+                <p>ADMINISTRATION</p>
+            </div>
+
+            <nav aria-label="Administrationsnavigation">
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#users">Benutzerverwaltung</a>
+                <a href="#servers">Serververwaltung</a>
+                <a href="#moderation">Moderation</a>
+                <a href="#verification">Bot-Verifizierung</a>
+                <a href="#admins">Administratoren</a>
+                <a href="#settings">Einstellungen</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html">Zurück zu ChatLink</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Administrationspanel</h1>
+                    <p>Verwaltung der ChatLink-Plattform</p>
+                </div>
+
+                <div class="admin-profile">
+                    <span class="admin-indicator"></span>
+                    <span>Admin-Bereich</span>
+                </div>
+            </header>
+
+            <section id="dashboard" class="section">
+                <h2>Dashboard</h2>
+                <p>Systemübersicht</p>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <p>Benutzer</p>
+                        <h3 id="userCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Server</p>
+                        <h3 id="serverCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Gesperrte Benutzer</p>
+                        <h3 id="bannedCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Offene Prüfungen</p>
+                        <h3 id="verificationCount">0</h3>
+                    </article>
+                </div>
+            </section>
+
+            <section id="users" class="section">
+                <h2>Benutzerverwaltung</h2>
+                <div class="content-card">
+                    <h3>Benutzerübersicht</h3>
+                    <p>Hier wird später die Benutzerliste angezeigt.</p>
+                </div>
+            </section>
+
+            <section id="servers" class="section">
+                <h2>Serververwaltung</h2>
+                <div class="content-card">
+                    <h3>ChatLink-Server</h3>
+                    <p>Hier wird die Serververwaltung eingerichtet.</p>
+                </div>
+            </section>
+
+            <section id="moderation" class="section">
+                <h2>Moderation</h2>
+                <div class="content-card">
+                    <h3>Moderationsübersicht</h3>
+                    <p>Hier werden Verwarnungen und Sperren vorbereitet.</p>
+                </div>
+            </section>
+
+            <section id="verification" class="section">
+                <h2>Bot-Verifizierung</h2>
+                <div class="content-card">
+                    <h3>Verifizierungsanträge</h3>
+                    <p>Hier werden Bot-Verifizierungen verwaltet.</p>
+                </div>
+            </section>
+
+            <section id="admins" class="section">
+                <h2>Administratoren</h2>
+                <div class="content-card">
+                    <h3>Teamverwaltung</h3>
+                    <p>Hier werden Teammitglieder und Rollen verwaltet.</p>
+                </div>
+            </section>
+
+            <section id="settings" class="section">
+                <h2>Einstellungen</h2>
+                <div class="content-card">
+                    <h3>Systemeinstellungen</h3>
+                    <p>Hier werden die Admin-Einstellungen vorbereitet.</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>ChatLink Administration | Version 2.1.0</p>
+            </footer>
+
+        </main>
+    </div>
+</body>
+</html>

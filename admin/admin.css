@@ -1,0 +1,178 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #101426;
+    color: #ffffff;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #090e1c;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin-bottom: 35px;
+}
+
+.logo h2 {
+    font-size: 28px;
+}
+
+.logo h2 span {
+    color: #e44b64;
+}
+
+.logo p {
+    color: #9ba8c5;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar nav a,
+.sidebar-bottom a {
+    color: #cbd4e8;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: linear-gradient(90deg, #164fbd, #b52e58);
+    color: #ffffff;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.topbar p,
+.section > p {
+    color: #aab5cc;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #36d68a;
+}
+
+.section {
+    margin-bottom: 35px;
+    scroll-margin-top: 25px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.stat-card,
+.content-card {
+    background: #1a2238;
+    border: 1px solid #303d5c;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.stat-card p {
+    color: #aab5cc;
+    margin-bottom: 12px;
+}
+
+.stat-card h3 {
+    font-size: 30px;
+}
+
+.content-card p {
+    color: #aab5cc;
+    margin-top: 10px;
+}
+
+footer {
+    color: #8591aa;
+    border-top: 1px solid #303d5c;
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

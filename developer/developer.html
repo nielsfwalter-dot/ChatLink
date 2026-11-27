@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChatLink Developer Portal">
+
+    <title>ChatLink | Developer Portal</title>
+
+    <link rel="stylesheet" href="developer.css">
+    <script src="developer.js" defer></script>
+</head>
+
+<body>
+    <div class="developer-layout">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Chat<span>Link</span></h2>
+                <p>DEVELOPER PORTAL</p>
+            </div>
+
+            <nav aria-label="Developer Navigation">
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#applications">Meine Apps</a>
+                <a href="#api">API-Dokumentation</a>
+                <a href="#keys">API-Schlüssel</a>
+                <a href="#webhooks">Webhooks</a>
+                <a href="#verification">Bot-Verifizierung</a>
+                <a href="#statistics">Statistiken</a>
+                <a href="#settings">Einstellungen</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html">Zurück zu ChatLink</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Developer Portal</h1>
+                    <p>Entwickle deine eigenen ChatLink-Anwendungen.</p>
+                </div>
+
+                <div class="developer-profile">
+                    <span class="status-indicator"></span>
+                    Developer-Bereich
+                </div>
+            </header>
+
+            <section id="dashboard" class="section">
+                <h2>Dashboard</h2>
+                <p class="description">
+                    Willkommen im ChatLink Developer Portal.
+                </p>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <p>Meine Apps</p>
+                        <h3 id="appCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>API-Anfragen</p>
+                        <h3 id="apiCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Webhooks</p>
+                        <h3 id="webhookCount">0</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Verifizierte Bots</p>
+                        <h3 id="botCount">0</h3>
+                    </article>
+                </div>
+            </section>
+
+            <section id="applications" class="section">
+                <h2>Meine Apps</h2>
+
+                <div class="content-card">
+                    <h3>App-Verwaltung</h3>
+                    <p>
+                        Hier kannst du später deine ChatLink-Anwendungen
+                        erstellen und verwalten.
+                    </p>
+
+                    <button type="button" id="createAppButton">
+                        Neue App erstellen
+                    </button>
+
+                    <p id="appMessage" class="message" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <section id="api" class="section">
+                <h2>API-Dokumentation</h2>
+
+                <div class="content-card">
+                    <h3>ChatLink API</h3>
+                    <p>
+                        Hier werden später die offiziellen API-Endpunkte,
+                        Funktionen und Entwickleranleitungen dokumentiert.
+                    </p>
+
+                    <span class="status-label">In Vorbereitung</span>
+                </div>
+            </section>
+
+            <section id="keys" class="section">
+                <h2>API-Schlüssel</h2>
+
+                <div class="content-card">
+                    <h3>Schlüsselverwaltung</h3>
+                    <p>
+                        Hier wird später die Verwaltung deiner API-Schlüssel
+                        eingerichtet.
+                    </p>
+
+                    <p class="security-note">
+                        API-Schlüssel werden erst nach Einrichtung einer
+                        sicheren serverseitigen Verwaltung bereitgestellt.
+                    </p>
+                </div>
+            </section>
+
+            <section id="webhooks" class="section">
+                <h2>Webhooks</h2>
+
+                <div class="content-card">
+                    <h3>Webhook-Verwaltung</h3>
+                    <p>
+                        Hier kannst du später Webhook-Verbindungen
+                        konfigurieren und überwachen.
+                    </p>
+                </div>
+            </section>
+
+            <section id="verification" class="section">
+                <h2>Bot-Verifizierung</h2>
+
+                <div class="content-card">
+                    <h3>Verifizierungsantrag</h3>
+                    <p>
+                        Hier wird später die Beantragung des offiziellen
+                        ChatLink-Bot-Verifizierungsabzeichens möglich sein.
+                    </p>
+
+                    <span class="verification-badge">
+                        OV
+                    </span>
+                    <span class="verification-check">✓</span>
+                </div>
+            </section>
+
+            <section id="statistics" class="section">
+                <h2>API-Statistiken</h2>
+
+                <div class="content-card">
+                    <h3>Nutzungsübersicht</h3>
+                    <p>
+                        Hier werden später API-Aufrufe und Nutzungsdaten
+                        angezeigt.
+                    </p>
+                </div>
+            </section>
+
+            <section id="settings" class="section">
+                <h2>Einstellungen</h2>
+
+                <div class="content-card">
+                    <h3>Developer-Einstellungen</h3>
+                    <p>
+                        Hier werden später deine persönlichen
+                        Entwicklereinstellungen verwaltet.
+                    </p>
+                </div>
+            </section>
+
+            <footer>
+                ChatLink Developer Portal | Version 0.1
+            </footer>
+
+        </main>
+    </div>
+</body>
+</html>
